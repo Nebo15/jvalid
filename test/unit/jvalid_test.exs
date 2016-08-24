@@ -9,6 +9,9 @@ defmodule SampleUsageTest do
   test "validates used schema" do
     assert valid_schema?(:schema, %{"foo" => "bar"})
     refute valid_schema?(:schema, %{"foo" => 1})
+
+    assert :ok = validate_schema(:schema, %{"foo" => "bar"})
+    assert {:error, _} = validate_schema(:schema, %{"foo" => 1})
   end
 
   test "validates inline schema" do
@@ -17,5 +20,8 @@ defmodule SampleUsageTest do
 
     assert valid_schema?(schema, %{"foo" => "bar"})
     refute valid_schema?(schema, %{"foo" => 1})
+
+    assert :ok = validate_schema(schema, %{"foo" => "bar"})
+    assert {:error, _} = validate_schema(schema, %{"foo" => 1})
   end
 end

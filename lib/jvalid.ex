@@ -52,6 +52,7 @@ defmodule JValid do
 
   @doc """
     Validate map using previously loaded schema.
+    Returns true if schema is valid.
 
     Example:
 
@@ -79,6 +80,39 @@ defmodule JValid do
     quote bind_quoted: binding do
       schema
       |> ExJsonSchema.Validator.valid?(map)
+    end
+  end
+
+  @doc """
+    Validate map using previously loaded schema.
+    Returns `:ok` if map is valid, otherwise - `{:error, reason}`.
+
+    Example:
+
+        use JValid
+
+        # Include schema in a module scope
+        use_schema :schema, "test/support/schema.json"
+        # ...
+        validate_schema?(:schema, map)
+
+        # Include schema in a function scope
+        "test/support/schema.json"
+        |> load_schema
+        |> validate_schema?(map)
+  """
+  defmacro validate_schema(schema, map) when is_atom(schema) do
+    quote bind_quoted: binding do
+      @schemas
+      |> Keyword.get(schema)
+      |> ExJsonSchema.Validator.validate(map)
+    end
+  end
+
+  defmacro validate_schema(schema, map) do
+    quote bind_quoted: binding do
+      schema
+      |> ExJsonSchema.Validator.validate(map)
     end
   end
 end
