@@ -14,7 +14,7 @@ It's [available in Hex](https://hex.pm/packages/jvalid), the package can be inst
 
     ```elixir
     def deps do
-      [{:jvalid, "~> 0.2.0"}]
+      [{:jvalid, "~> 0.3.0"}]
     end
     ```
 

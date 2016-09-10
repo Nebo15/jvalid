@@ -1,7 +1,7 @@
 defmodule JValid.Mixfile do
   use Mix.Project
 
-  @version "0.2.0"
+  @version "0.3.0"
 
   def project do
     [app: :jvalid,
@@ -23,7 +23,7 @@ defmodule JValid.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :ex_json_schema]]
+    [applications: [:logger, :ex_json_schema, :poison]]
   end
 
   # Specifies which paths to compile per environment.
