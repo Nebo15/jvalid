@@ -27,7 +27,7 @@ defmodule JValid do
       source = file
       |> File.read!
       |> Poison.decode!
-      |> ExJsonSchema.Schema.resolve
+      |> NExJsonSchema.Schema.resolve
 
       @schemas [{name, source} | @schemas]
     end
@@ -46,7 +46,7 @@ defmodule JValid do
       file
       |> File.read!
       |> Poison.decode!
-      |> ExJsonSchema.Schema.resolve
+      |> NExJsonSchema.Schema.resolve
     end
   end
 
@@ -72,14 +72,14 @@ defmodule JValid do
     quote bind_quoted: binding do
       @schemas
       |> Keyword.get(schema)
-      |> ExJsonSchema.Validator.valid?(map)
+      |> NExJsonSchema.Validator.valid?(map)
     end
   end
 
   defmacro valid_schema?(schema, map) do
     quote bind_quoted: binding do
       schema
-      |> ExJsonSchema.Validator.valid?(map)
+      |> NExJsonSchema.Validator.valid?(map)
     end
   end
 
@@ -105,14 +105,14 @@ defmodule JValid do
     quote bind_quoted: binding do
       @schemas
       |> Keyword.get(schema)
-      |> ExJsonSchema.Validator.validate(map)
+      |> NExJsonSchema.Validator.validate(map)
     end
   end
 
   defmacro validate_schema(schema, map) do
     quote bind_quoted: binding do
       schema
-      |> ExJsonSchema.Validator.validate(map)
+      |> NExJsonSchema.Validator.validate(map)
     end
   end
 end

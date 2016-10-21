@@ -1,7 +1,7 @@
 defmodule JValid.Mixfile do
   use Mix.Project
 
-  @version "0.3.0"
+  @version "0.4.0"
 
   def project do
     [app: :jvalid,
@@ -23,7 +23,7 @@ defmodule JValid.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :ex_json_schema, :poison]]
+    [applications: [:logger, :nex_json_schema, :poison]]
   end
 
   # Specifies which paths to compile per environment.
@@ -46,7 +46,7 @@ defmodule JValid.Mixfile do
   defp deps do
     [{:distillery, "~> 0.9"},
      {:poison, "~> 2.0"},
-     {:ex_json_schema, "~> 0.5.1"},
+     {:nex_json_schema, "~> 0.5.1"},
      {:benchfella, "~> 0.3", only: [:dev, :test]},
      {:ex_doc, ">= 0.0.0", only: [:dev, :test]},
      {:excoveralls, "~> 0.5", only: [:dev, :test]},
