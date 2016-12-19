@@ -1,7 +1,7 @@
 defmodule JValid.Mixfile do
   use Mix.Project
 
-  @version "0.4.0"
+  @version "0.5.0"
 
   def project do
     [app: :jvalid,
@@ -44,8 +44,8 @@ defmodule JValid.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:distillery, "~> 0.9"},
-     {:poison, "~> 2.0"},
+    [{:distillery, "~> 1.0"},
+     {:poison, "~> 3.0"},
      {:nex_json_schema, "~> 0.5.1"},
      {:benchfella, "~> 0.3", only: [:dev, :test]},
      {:ex_doc, ">= 0.0.0", only: [:dev, :test]},
