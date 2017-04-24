@@ -6,7 +6,7 @@ defmodule JValid.Mixfile do
   def project do
     [app: :jvalid,
      description: "Json Schema validation helper, that allows to store schemes in a separate files.",
-     package: package,
+     package: package(),
      version: @version,
      elixir: "~> 1.3",
      elixirc_paths: elixirc_paths(Mix.env),
@@ -44,9 +44,9 @@ defmodule JValid.Mixfile do
   #
   # Type "mix help deps" for more examples and options
   defp deps do
-    [{:distillery, "~> 1.0"},
-     {:poison, "~> 3.0"},
-     {:nex_json_schema, "~> 0.5.1"},
+    [{:distillery, ">= 1.3.0"},
+     {:poison, ">= 3.1.0"},
+     {:nex_json_schema, ">= 0.5.4"},
      {:benchfella, "~> 0.3", only: [:dev, :test]},
      {:ex_doc, ">= 0.0.0", only: [:dev, :test]},
      {:excoveralls, "~> 0.5", only: [:dev, :test]},
