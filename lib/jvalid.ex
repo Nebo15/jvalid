@@ -23,7 +23,7 @@ defmodule JValid do
         end
   """
   defmacro use_schema(name, file) when is_atom(name) and is_binary(file) do
-    quote bind_quoted: binding do
+    quote bind_quoted: binding() do
       source = file
       |> File.read!
       |> Poison.decode!
@@ -42,7 +42,7 @@ defmodule JValid do
         schema = load_schema "test/support/schema.json"
   """
   defmacro load_schema(file) when is_binary(file) do
-    quote bind_quoted: binding do
+    quote bind_quoted: binding() do
       file
       |> File.read!
       |> Poison.decode!
@@ -69,7 +69,7 @@ defmodule JValid do
         |> valid_schema?(map)
   """
   defmacro valid_schema?(schema, map) when is_atom(schema) do
-    quote bind_quoted: binding do
+    quote bind_quoted: binding() do
       @schemas
       |> Keyword.get(schema)
       |> NExJsonSchema.Validator.valid?(map)
@@ -77,7 +77,7 @@ defmodule JValid do
   end
 
   defmacro valid_schema?(schema, map) do
-    quote bind_quoted: binding do
+    quote bind_quoted: binding() do
       schema
       |> NExJsonSchema.Validator.valid?(map)
     end
@@ -102,7 +102,7 @@ defmodule JValid do
         |> validate_schema?(map)
   """
   defmacro validate_schema(schema, map) when is_atom(schema) do
-    quote bind_quoted: binding do
+    quote bind_quoted: binding() do
       @schemas
       |> Keyword.get(schema)
       |> NExJsonSchema.Validator.validate(map)
@@ -110,7 +110,7 @@ defmodule JValid do
   end
 
   defmacro validate_schema(schema, map) do
-    quote bind_quoted: binding do
+    quote bind_quoted: binding() do
       schema
       |> NExJsonSchema.Validator.validate(map)
     end
