@@ -1,14 +1,14 @@
 defmodule JValid.Mixfile do
   use Mix.Project
 
-  @version "0.5.1"
+  @version "0.5.2"
 
   def project do
     [app: :jvalid,
      description: "Json Schema validation helper, that allows to store schemes in a separate files.",
      package: package(),
      version: @version,
-     elixir: "~> 1.3",
+     elixir: "~> 1.4",
      elixirc_paths: elixirc_paths(Mix.env),
      compilers: [] ++ Mix.compilers,
      build_embedded: Mix.env == :prod,
