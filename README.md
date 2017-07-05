@@ -12,16 +12,16 @@ It's [available in Hex](https://hex.pm/packages/jvalid), the package can be inst
 
   1. Add `jvalid` to your list of dependencies in `mix.exs`:
 
-    ```elixir
-    def deps do
-      [{:jvalid, "~> 0.5.2"}]
-    end
-    ```
+      ```elixir
+      def deps do
+        [{:jvalid, "~> 0.5.2"}]
+      end
+      ```
 
   2. Ensure `jvalid` is started before your application:
 
-    ```elixir
-    def application do
-      [applications: [:jvalid]]
-    end
-    ```
+      ```elixir
+      def application do
+        [applications: [:jvalid]]
+      end
+      ```
