@@ -29,7 +29,7 @@ defmodule JValid do
       source =
         file
         |> File.read!()
-        |> Poison.decode!()
+        |> Jason.decode!()
         |> Schema.resolve()
 
       @schemas [{name, source} | @schemas]
@@ -50,7 +50,7 @@ defmodule JValid do
 
       file
       |> File.read!()
-      |> Poison.decode!()
+      |> Jason.decode!()
       |> Schema.resolve()
     end
   end
