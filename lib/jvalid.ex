@@ -24,10 +24,11 @@ defmodule JValid do
   """
   defmacro use_schema(name, file) when is_atom(name) and is_binary(file) do
     quote bind_quoted: binding() do
-      source = file
-      |> File.read!()
-      |> Poison.decode!()
-      |> NExJsonSchema.Schema.resolve()
+      source =
+        file
+        |> File.read!()
+        |> Poison.decode!()
+        |> NExJsonSchema.Schema.resolve()
 
       @schemas [{name, source} | @schemas]
     end

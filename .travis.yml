@@ -13,4 +13,3 @@ script:
   - "mix test --trace"
   - "mix coveralls.travis"
   - "mix credo"
-  - "mix dogma"
