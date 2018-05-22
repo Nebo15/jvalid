@@ -24,11 +24,13 @@ defmodule JValid do
   """
   defmacro use_schema(name, file) when is_atom(name) and is_binary(file) do
     quote bind_quoted: binding() do
+      alias NExJsonSchema.Schema
+
       source =
         file
         |> File.read!()
         |> Poison.decode!()
-        |> NExJsonSchema.Schema.resolve()
+        |> Schema.resolve()
 
       @schemas [{name, source} | @schemas]
     end
@@ -44,10 +46,12 @@ defmodule JValid do
   """
   defmacro load_schema(file) when is_binary(file) do
     quote bind_quoted: binding() do
+      alias NExJsonSchema.Schema
+
       file
       |> File.read!()
       |> Poison.decode!()
-      |> NExJsonSchema.Schema.resolve()
+      |> Schema.resolve()
     end
   end
 
@@ -71,16 +75,20 @@ defmodule JValid do
   """
   defmacro valid_schema?(schema, map) when is_atom(schema) do
     quote bind_quoted: binding() do
+      alias NExJsonSchema.Validator
+
       @schemas
       |> Keyword.get(schema)
-      |> NExJsonSchema.Validator.valid?(map)
+      |> Validator.valid?(map)
     end
   end
 
   defmacro valid_schema?(schema, map) do
     quote bind_quoted: binding() do
+      alias NExJsonSchema.Validator
+
       schema
-      |> NExJsonSchema.Validator.valid?(map)
+      |> Validator.valid?(map)
     end
   end
 
@@ -104,16 +112,20 @@ defmodule JValid do
   """
   defmacro validate_schema(schema, map) when is_atom(schema) do
     quote bind_quoted: binding() do
+      alias NExJsonSchema.Validator
+
       @schemas
       |> Keyword.get(schema)
-      |> NExJsonSchema.Validator.validate(map)
+      |> Validator.validate(map)
     end
   end
 
   defmacro validate_schema(schema, map) do
     quote bind_quoted: binding() do
+      alias NExJsonSchema.Validator
+
       schema
-      |> NExJsonSchema.Validator.validate(map)
+      |> Validator.validate(map)
     end
   end
 end
