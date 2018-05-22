@@ -25,7 +25,7 @@ defmodule JValid.Mixfile do
   #
   # Type "mix help compile.app" for more information
   def application do
-    [applications: [:logger, :nex_json_schema, :poison]]
+    [applications: [:logger, :nex_json_schema, :jason]]
   end
 
   # Specifies which paths to compile per environment.
@@ -48,8 +48,8 @@ defmodule JValid.Mixfile do
   defp deps do
     [
       {:distillery, ">= 1.3.0"},
-      {:poison, ">= 3.1.0"},
-      {:nex_json_schema, ">= 0.7.0"},
+      {:jason, "~> 1.0"},
+      {:nex_json_schema, ">= 0.8.0"},
       {:benchfella, "~> 0.3", only: [:dev, :test]},
       {:ex_doc, ">= 0.0.0", only: [:dev, :test]},
       {:excoveralls, "~> 0.5", only: [:dev, :test]},
