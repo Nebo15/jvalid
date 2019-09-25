@@ -47,12 +47,11 @@ defmodule JValid.Mixfile do
   # Type "mix help deps" for more examples and options
   defp deps do
     [
-      {:distillery, ">= 1.3.0"},
-      {:jason, "~> 1.0"},
+      {:jason, "~> 1.1"},
       {:nex_json_schema, ">= 0.8.0"},
       {:benchfella, "~> 0.3", only: [:dev, :test]},
       {:ex_doc, ">= 0.0.0", only: [:dev, :test]},
-      {:excoveralls, "~> 0.5", only: [:dev, :test]},
+      {:excoveralls, "~> 0.11.2", only: [:dev, :test]},
       {:credo, ">= 0.4.8", only: [:dev, :test]}
     ]
   end
