@@ -9,7 +9,7 @@ defmodule JValid.Mixfile do
       description: "Json Schema validation helper, that allows to store schemes in a separate files.",
       package: package(),
       version: @version,
-      elixir: "~> 1.4",
+      elixir: "~> 1.7",
       elixirc_paths: elixirc_paths(Mix.env()),
       compilers: [] ++ Mix.compilers(),
       build_embedded: Mix.env() == :prod,
